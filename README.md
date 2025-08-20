@@ -2,7 +2,7 @@
 
 Projeto simples em Java utilizando Maven e a biblioteca Gson para manipulação de JSON.
 
-## 🚀 Como rodar
+## 🚀 Como roda
 
 ```bash
 git clone https://github.com/seu-usuario/meu-projeto-maven.git
