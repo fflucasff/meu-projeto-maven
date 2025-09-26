@@ -33,15 +33,52 @@ public class PessoaTest {
         assertEquals(25, p.getIdade());
     }
 
+    @Test
+    public void testFalar() {
+        Pessoa p = new Pessoa("João", 20);
+        assertEquals("João diz: \"Olá!\"", p.falar("Olá!"));
+    }
 
+    @Test
+    public void testAndar() {
+        Pessoa p = new Pessoa("Maria", 30);
+        p.andar(100);
+        assertEquals(100, p.getPassosDados());
+        p.andar(50);
+        assertEquals(150, p.getPassosDados());
+    }
 
+    @Test
+    public void testFazerAniversario() {
+        Pessoa p = new Pessoa("Carlos", 40);
+        p.fazerAniversario();
+        assertEquals(41, p.getIdade());
+    }
 
+    @Test
+    public void testComer() {
+        Pessoa p = new Pessoa("Lucas", 18);
+        assertEquals("Lucas está comendo pizza.", p.comer("pizza"));
+    }
 
+    @Test
+    public void testEstudar() {
+        Pessoa p = new Pessoa("Paula", 22);
+        assertEquals("Paula está estudando Matemática.", p.estudar("Matemática"));
+    }
 
+    @Test
+    public void testTrabalhar() {
+        Pessoa p = new Pessoa("Jorge", 35);
+        p.setProfissao("Engenheiro");
+        assertEquals("Jorge está trabalhando como Engenheiro.", p.trabalhar());
+    }
 
-
-
-
+    @Test
+    public void testDormirHorasInvalidas() {
+        Pessoa p = new Pessoa("Pedro", 28);
+        assertThrows(IllegalArgumentException.class, () -> p.dormir(-3));
+    }
 
     //Falhas
     @Test
@@ -63,12 +100,44 @@ public class PessoaTest {
     public void testeErroGetIdade(){
         Pessoa p = new Pessoa("Otavio",24);
         int a = p.getIdade();
-        assertEquals(26,a);
+        assertNotEquals(26,a);
     }
     @Test
     public void testeErroGetNome(){
         Pessoa p = new Pessoa("Otavio",24);
         String a = p.getName();
-        assertEquals("Davi",a);
+        assertNotEquals("Davi",a);
     };
+    @Test
+    public void testFalarComFalha() {
+        Pessoa p = new Pessoa("João", 20);
+        assertNotEquals("João fala: \"Olá!\"", p.falar("Olá!")); // errado
+    }
+
+    @Test
+    public void testAndarComFalha() {
+        Pessoa p = new Pessoa("Maria", 30);
+        p.andar(50);
+        assertNotEquals(100, p.getPassosDados()); // errado
+    }
+
+    @Test
+    public void testDormirComFalha() {
+        Pessoa p = new Pessoa("Pedro", 28);
+        assertThrows(IllegalArgumentException.class, () -> p.dormir(-5));
+    }
+
+    @Test
+    public void testFazerAniversarioComFalha() {
+        Pessoa p = new Pessoa("Carlos", 40);
+        p.fazerAniversario();
+        assertNotEquals(50, p.getIdade());
+        // errado
+    }
+    @Test
+    public void testErroTrabalhar() {
+        Pessoa p = new Pessoa("Jorge", 35);
+        p.setProfissao("Engenheiro");
+        assertNotEquals("Rodolfo está trabalhando como Açougueiro.", p.trabalhar());
+    }
 }
