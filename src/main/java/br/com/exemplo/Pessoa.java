@@ -6,10 +6,11 @@ public class Pessoa {
     private int passosDados;
     private String profissao;
 
-    public Pessoa(String nome, int idade) {
+    public Pessoa(String nome, int idade, String profissao) {
         this.nome = nome;
         this.idade = idade;
         this.passosDados = 0;
+        this.profissao = profissao;
     }
     public String criarJson(Pessoa pessoa){
         Gson gson = new Gson();
@@ -58,7 +59,4 @@ public class Pessoa {
         return nome + " está trabalhando como " + this.profissao + ".";
     }
 
-    public void setProfissao(String profissao) {
-        this.profissao = profissao;
-    }
 }
