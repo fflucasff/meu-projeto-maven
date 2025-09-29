@@ -15,7 +15,6 @@ Ele faz parte da disciplina *C214 - Engenharia de Software*.
 ## 🛠 Tecnologias Utilizadas
 - Java 17 (ou a versão que você usou)
 - Maven
-- [Liste bibliotecas externas se usou alguma]
 
 ---
 
